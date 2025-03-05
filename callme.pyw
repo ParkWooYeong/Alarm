@@ -5,8 +5,8 @@ import threading
 import datetime
 import winsound
 
-# 알람 소리 파일 (WAV 형식)
-ALARM_SOUND = "alarmm.wav"  # 같은 폴더에 "alarm.wav" 파일이 있어야 함
+# 알람 소리 파일 
+ALARM_SOUND = "alarmm.wav"
 
 # 알람 설정 함수
 def set_alarm():
@@ -34,9 +34,8 @@ def alarm_countdown(wait_time):
 
 # Windows에서 마우스 휠 한 칸씩 이동
 def on_mouse_wheel(event, listbox):
-    direction = -1 if event.delta > 0 else 1  # 위로 이동(-1) / 아래로 이동(1)
-    listbox.yview_scroll(direction, "units")  # 1씩 이동하도록 설정
-
+    direction = -1 if event.delta > 0 else 1  
+    listbox.yview_scroll(direction, "units") 
 # GUI 생성
 root = tk.Tk()
 root.title("Mero")
@@ -49,25 +48,25 @@ tk.Label(root, text="⏰ 알람 시간 선택", font=("Arial", 12, "bold"), fg="
 frame = tk.Frame(root, bg="#222831")
 frame.place(relx=0.5, rely=0.45, anchor="center")  # 중앙 정렬
 
-# 시간 선택 Listbox (한 개만 표시)
+# 시간 선택
 hour_listbox = tk.Listbox(frame, font=("Arial", 14), height=1, width=3, selectmode="browse",
     exportselection=False, bg="#222831", fg="white",
     selectbackground="#00ADB5", selectforeground="black",
     borderwidth=0, highlightthickness=0, justify="center")
 hour_listbox.pack(side=tk.LEFT, padx=10, fill=tk.Y)
 
-# 분 선택 Listbox (한 개만 표시)
+# 분 선택 Listbox
 minute_listbox = tk.Listbox(frame, font=("Arial", 14), height=1, width=3, selectmode="browse",
     exportselection=False, bg="#222831", fg="white",
     selectbackground="#00ADB5", selectforeground="black",
     borderwidth=0, highlightthickness=0, justify="center")
 minute_listbox.pack(side=tk.LEFT, padx=10, fill=tk.Y)
 
-# 0~23시 추가 (앞뒤 공백 추가하여 가운데 정렬 효과)
+# 0~23시 추가 
 for h in range(24):
     hour_listbox.insert(tk.END, f" {h:2d} ")
 
-# 0~59분 추가 (앞뒤 공백 추가하여 가운데 정렬 효과)
+# 0~59분 추가
 for m in range(60):
     minute_listbox.insert(tk.END, f" {m:2d} ")
 
